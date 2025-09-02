@@ -2,7 +2,7 @@
 {
  --text-color:#1a1c20;
  --link-color:#4a76ee;
- --background-color:white;
+ --background-color:rgb(193, 211, 231);
 }
 
 *
@@ -116,8 +116,8 @@ nav .left a
 
 .hero-section .headshot img
 {
-    border-radius: 50%;
-    width: 250px;
+    border-radius: 20%;
+    width: 400px;
 }
 .hero-section .headshot
 {
@@ -260,7 +260,7 @@ nav .left a
 #testimonial {
     text-align: center;
     padding: 80px 50px;
-    background: #fafafa;
+    background: var(--background-color);
 }
 
 #testimonial h2 {
@@ -278,7 +278,7 @@ nav .left a
 }
 
 #testimonial .card {
-    background: white;
+    background:skyblue;
     padding: 25px;
     border-radius: 10px;
     max-width: 300px;
@@ -301,7 +301,7 @@ nav .left a
 
 #testimonial .card h3 {
     font-size: 18px;
-    color: var(--text-color);
+    color:#3647c3;
     font-weight: 600;
 }
 
@@ -413,5 +413,61 @@ footer .social-links a:hover {
         gap: 10px;
     }
 }
+.text b
+{
+    padding: 0 10px;
+}
 
+/* Contact Form Styling */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4a63e7;
+  box-shadow: 0 0 8px rgba(74, 99, 231, 0.3);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #4a63e7;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #3647c3;
+}
