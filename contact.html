@@ -12,123 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <style>
-        /* --- NEW Animation Styles --- */
 
-        /* 1. Define the animation keyframes */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 2. Set the initial state for content containers to be hidden/below */
-        #contact .info,
-        .form-container,
-        .links {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* 3. Class to trigger the animation */
-        .animate-in {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        /* --- Form specific styling for visual appeal (adjust as needed) --- */
-        .form-container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 30px;
-            border-radius: 10px;
-            /* Note: var(--card-background) needs to be defined in assets/style.css or elsewhere */
-            background-color: var(--card-background, #2a2a2a); 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            /* Ensure the form-container has its own transition */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--main-text, #fff);
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--secondary-text, #555);
-            border-radius: 5px;
-            background-color: var(--background-color, #1a1a1a);
-            color: var(--main-text, #fff);
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-
-        .form-container textarea {
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: var(--primary-color, #00bcd4);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #008fa3;
-        }
-
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .links a {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            border-radius: 50px;
-            color: var(--main-text, #fff);
-            background-color: var(--card-background, #2a2a2a);
-            transition: background-color 0.3s;
-        }
-
-        .links a i {
-            margin-right: 8px;
-            font-size: 1.2em;
-        }
-
-        .links a:hover {
-            background-color: var(--primary-color, #00bcd4);
-            color: var(--background-color, #1a1a1a);
-        }
-
-        @media (max-width: 600px) {
-            .links {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .links a {
-                justify-content: center;
-            }
-        }
     </style>
 </head>
 <body>
@@ -214,11 +98,11 @@
     </footer>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Elements to be animated in order: info, form, links
+
         const elementsToAnimate = document.querySelectorAll('#contact .info, .form-container, .links');
         
         elementsToAnimate.forEach((element, index) => {
-            // Stagger the animation start time for each element (200ms delay per element)
+           
             setTimeout(() => {
                 element.classList.add('animate-in');
             }, index * 200); 
