@@ -13,7 +13,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <style>
-        /* Certificate-specific styles to complement your theme */
         .certificate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -21,6 +20,7 @@
             margin-top: 40px;
         }
 
+        /* UPDATED: Added initial state for animation */
         .certificate-card {
             background-color: var(--card-background);
             padding: 30px;
@@ -28,7 +28,29 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             border: 2px solid rgba(0, 188, 212, 0.2);
             text-align: center;
+            opacity: 0; /* Make cards invisible by default */
+            transform: translateY(20px); /* Move them down slightly */
             transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        /* NEW: Keyframes and animation class */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card-animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        #error {
+            color: #ff5757;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
         }
 
         .certificate-card:hover {
@@ -63,11 +85,40 @@
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
         }
-
-        /* Responsive adjustments for the grid */
+        
         @media (max-width: 924px) {
             .certificate-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 40px auto 30px auto;
+            display: flex;
+            gap: 10px;
+            padding: 0 20px; 
+        }
+
+        #search-input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            background-color: var(--card-background);
+            color: var(--main-text);
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #search-input:focus {
+            border-color: #00bcd4; 
+        }
+
+        @media (max-width: 600px) {
+            .search-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -93,25 +144,24 @@
     </nav>
 
     <main>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search certificates or skills...">
+        </div>
+        
         <section id="certificates">
             <h2>Certificates & Awards</h2>
             <div class="info">
-                <p>
-                    A collection of certifications and credentials earned through dedicated study and successful completion of courses in web development and programming.
-                </p>
+                <p>A collection of certifications and credentials earned through dedicated study and successful completion of courses in web development and programming.</p>
             </div>
 
             <div class="certificate-grid">
-                
                 <div class="certificate-card">
                     <i class="fa-solid fa-award" style="font-size: 4em; color: var(--primary-color);"></i>
                     <h3>Networking Basics</h3>
                     <p><strong>Issued By:</strong> Cisco Networking Academy</p>
                     <p><strong>Date:</strong> Feb 14, 2025</p>
                     <p><strong>Skills:</strong> Application Layer Services, IPv4 Addresses, Network Media, NetWork Types, Protocols Standards, Wireless Access</p>
-                    <a href="images/networking.pdf" target="_blank" class="certificate-link">
-                        <i class="fa-solid fa-eye"></i> View Credential
-                    </a>
+                    <a href="images/networking.pdf" target="_blank" class="certificate-link"><i class="fa-solid fa-eye"></i> View Credential</a>
                 </div>
 
                 <div class="certificate-card">
@@ -120,32 +170,27 @@
                     <p><strong>Issued By:</strong> Parsedom</p>
                     <p><strong>Date:</strong> July 25, 2025</p>
                     <p><strong>Skills:</strong> Data Parsing, HTTP Requests, Anti-Blocking, Validation, Authentication</p>
-                    <a href="images/backend.pdf" target="_blank" class="certificate-link">
-                        <i class="fa-solid fa-eye"></i> View Credential
-                    </a>
+                    <a href="images/backend.pdf" target="_blank" class="certificate-link"><i class="fa-solid fa-eye"></i> View Credential</a>
                 </div>
-<div class="certificate-card">
-    <i class="fa-brands fa-python" style="font-size: 4em; color: var(--primary-color);"></i>
-    <h3>Python for Webscraping</h3>
-    <p><strong>Issued By:</strong> Parsedom</p>
-    <p><strong>Date:</strong> 25 July, 2025</p>
-    <p><strong>Skills:</strong> Scrapy, Beautiful Soup, Requests, Selenium, XPath, HTTP/HTTPS</p>
-    <a href="images/certificate-python.png" target="_blank" class="certificate-link">
-        <i class="fa-solid fa-eye"></i> View Credential
-    </a>
-</div>
+                
+                <div class="certificate-card">
+                    <i class="fa-brands fa-python" style="font-size: 4em; color: var(--primary-color);"></i>
+                    <h3>Python for Webscraping</h3>
+                    <p><strong>Issued By:</strong> Parsedom</p>
+                    <p><strong>Date:</strong> 25 July, 2025</p>
+                    <p><strong>Skills:</strong> Scrapy, Beautiful Soup, Requests, Selenium, XPath, HTTP/HTTPS</p>
+                    <a href="images/certificate-python.png" target="_blank" class="certificate-link"><i class="fa-solid fa-eye"></i> View Credential</a>
+                </div>
 
                 <div class="certificate-card">
                     <i class="fa-solid fa-book-open-reader" style="font-size: 4em; color: var(--secondary-text);"></i>
                     <h3>...More Coming Soon!</h3>
                     <p>Actively pursuing certification in **Cloud Technologies**.</p>
                     <p>Check back for updates. Stay connected with me.Thank you!</p>
-                    <a href="contact.html" class="certificate-link" style="background-color: var(--secondary-text); border-color: var(--secondary-text);">
-                        <i class="fa-solid fa-user"></i> Let's Connect
-                    </a>
+                    <a href="contact.html" class="certificate-link" style="background-color: var(--secondary-text); border-color: var(--secondary-text);"><i class="fa-solid fa-user"></i> Let's Connect</a>
                 </div>
-                
             </div>
+            <p id="error"></p>
         </section>
     </main>
 
@@ -153,18 +198,58 @@
         <div class="footer-container">
             <p>&copy; 2025 Sabin. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://wa.me/9779814985729" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/laxmi-rimal" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="mailto:laxmirimal2005@gmail.com">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
+                <a href="https://wa.me/9779814985729" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/laxmi-rimal" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:laxmirimal2005@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
-        </div>  
+        </div>  
     </footer>
+<script>
+    function searchCertificates() {
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const cards = document.querySelectorAll('.certificate-card'); 
+        const errorElement = document.getElementById('error');
+        let resultsFound = false; 
+
+        cards.forEach(card => {
+            // Re-apply animation class for re-appearing cards during search
+            if (card.style.animation) {
+                card.style.animation = '';
+            }
+            
+            const cardText = card.textContent.toLowerCase();
+
+            if (cardText.includes(searchTerm)) {
+                card.style.display = 'block'; 
+                resultsFound = true;
+            } else {
+                card.style.display = 'none'; 
+            }
+        });
+
+        if (resultsFound) {
+            errorElement.textContent = ''; 
+        } else if (searchTerm.trim() !== '') {
+            errorElement.textContent = '❌ No search results found matching "' + searchTerm + '".';
+        } else {
+            errorElement.textContent = ''; 
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Animation Logic ---
+        const cards = document.querySelectorAll('.certificate-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('card-animate');
+            }, index * 150); // Stagger the animation start time
+        });
+
+        // --- Search Logic ---
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', searchCertificates);
+    });
+</script>
     <script src="assets/main.js"></script>
 </body>
 </html>
